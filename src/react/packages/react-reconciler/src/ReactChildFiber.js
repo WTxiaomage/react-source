@@ -1167,6 +1167,7 @@ function ChildReconciler(shouldTrackSideEffects) {
     element: ReactElement,
     expirationTime: ExpirationTime,
   ): Fiber {
+    // debugger
     const key = element.key;
     let child = currentFirstChild;
     // 初始渲染 currentFirstChild 为 null

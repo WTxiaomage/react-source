@@ -279,6 +279,7 @@ function legacyRenderSubtreeIntoContainer(
     // 因为批量更新是异步的是可以被打断的, 但是初始化渲染应该尽快完成不能被打断
     // 所以不执行批量更新
     unbatchedUpdates(() => {
+     debugger
       updateContainer(children, fiberRoot, parentComponent, callback);
     });
   } else {
@@ -372,6 +373,7 @@ export function render(
   container: Container,
   callback: ?Function,
 ) {
+  debugger
   // 检测 container 是否是符合要求的渲染容器
   // 即检测 container 是否是真实的DOM对象
   // 如果不符合要求就报错

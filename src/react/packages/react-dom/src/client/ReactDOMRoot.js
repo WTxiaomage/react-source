@@ -125,6 +125,8 @@ function createRootImpl(
   // 服务器端渲染相关 null
   const hydrationCallbacks =
     (options != null && options.hydrationOptions) || null;
+    debugger
+    // 这里进去会创建fiberRoot和他关联的rootFiber
   const root = createContainer(container, tag, hydrate, hydrationCallbacks);
   markContainerAsRoot(root.current, container);
   // 服务器端渲染相关

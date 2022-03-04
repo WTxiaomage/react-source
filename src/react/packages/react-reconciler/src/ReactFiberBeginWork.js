@@ -858,6 +858,7 @@ function updateClassComponent(
       renderExpirationTime,
     );
   }
+  // debugger
   const nextUnitOfWork = finishClassComponent(
     current,
     workInProgress,
@@ -1017,6 +1018,7 @@ function updateHostRoot(current, workInProgress, renderExpirationTime) {
   cloneUpdateQueue(current, workInProgress);
   // 获取 updateQueue.payload 并赋值到 workInProgress.memoizedState
   // 要更新的内容就是 element 就是 rootFiber 的子元素
+  // debugger
   processUpdateQueue(workInProgress, nextProps, null, renderExpirationTime);
   // 获取 element 所在对象
   const nextState = workInProgress.memoizedState;
@@ -1068,6 +1070,7 @@ function updateHostRoot(current, workInProgress, renderExpirationTime) {
   } else {
     // 客户端渲染走 else
     // 构建子节点 fiber 对象
+    // debugger
     reconcileChildren(
       current,
       workInProgress,
@@ -3145,6 +3148,8 @@ function beginWork(
   workInProgress.expirationTime = NoWork;
   // 根据当前 Fiber 的类型决定如何构建起子级 Fiber 对象
   // 文件位置: shared/ReactWorkTags.js
+
+  // debugger
   switch (workInProgress.tag) {
     // 2
     // 函数组件在第一次被渲染时使用

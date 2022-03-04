@@ -425,6 +425,7 @@ export function scheduleUpdateOnFiber(
       // 初始渲染时内部条件判断不成立, 内部代码没有得到执行
       schedulePendingInteractions(root, expirationTime);
       // 同步任务入口点
+      debugger
       performSyncWorkOnRoot(root);
     } else {
       ensureRootIsScheduled(root);
@@ -1028,7 +1029,8 @@ function performSyncWorkOnRoot(root) {
   // renderExpirationTime => 0
   // true
   if (root !== workInProgressRoot || expirationTime !== renderExpirationTime) {
-    // 构建 workInProgressFiber 树及 rootFiber
+    // 构建 workInProgressFiber 树及 rootFiber 并且给全局变量workInProgress赋值了
+    debugger
     prepareFreshStack(root, expirationTime);
     // 初始渲染不执行 内部条件判断不成立
     startWorkOnPendingInteractions(root, expirationTime);
@@ -1043,7 +1045,9 @@ function performSyncWorkOnRoot(root) {
     do {
       try {
         // 以同步的方式开始构建 Fiber 对象
+        debugger
         workLoopSync();
+
         break;
       } catch (thrownValue) {
         handleError(root, thrownValue);
@@ -1084,6 +1088,7 @@ function performSyncWorkOnRoot(root) {
       root.finishedExpirationTime = expirationTime;
       // 结束 render 阶段
       // 进入 commit 阶段
+      debugger
       finishSyncRender(root);
     }
 
@@ -1537,6 +1542,7 @@ function performUnitOfWork(unitOfWork: Fiber): Fiber | null {
   } else {
     // beginWork: 从父到子, 构建 Fiber 节点对象
     // 返回值 next 为当前节点的子节点
+    debugger
     next = beginWork(current, unitOfWork, renderExpirationTime);
   }
   // 开发环境执行 忽略
@@ -1548,6 +1554,7 @@ function performUnitOfWork(unitOfWork: Fiber): Fiber | null {
   // 继续向上返回 遇到兄弟节点 构建兄弟节点的子 Fiber 对象 直到返回到根 Fiber 对象
   if (next === null) {
     // 从子到父, 构建其余节点 Fiber 对象
+    debugger
     next = completeUnitOfWork(unitOfWork);
   }
 
@@ -1714,6 +1721,7 @@ function completeUnitOfWork(unitOfWork: Fiber): Fiber | null {
   // 当执行到这里的时候, 说明遍历到了 root 节点, 已完成遍历
   // 更新 workInProgressRootExitStatus 的状态为 已完成
   if (workInProgressRootExitStatus === RootIncomplete) {
+    // debugger
     workInProgressRootExitStatus = RootCompleted;
   }
   return null;
@@ -1806,6 +1814,7 @@ function commitRoot(root) {
 }
 
 function commitRootImpl(root, renderPriorityLevel) {
+  debugger
   do {
     // 触发useEffect回调与其他同步任务
     // 由于这些任务可能触发新的渲染
@@ -1917,6 +1926,7 @@ function commitRootImpl(root, renderPriorityLevel) {
     startCommitSnapshotEffectsTimer();
     prepareForCommit(root.containerInfo);
     nextEffect = firstEffect;
+    debugger
     // commit 第一个子阶段
     // 处理类组件的 getSnapShotBeforeUpdate 生命周期函数
     do {
@@ -1950,6 +1960,7 @@ function commitRootImpl(root, renderPriorityLevel) {
     startCommitHostEffectsTimer();
     // commit 第二个子阶段
     nextEffect = firstEffect;
+    debugger
     do {
       if (__DEV__) {
         invokeGuardedCallback(
@@ -1990,6 +2001,7 @@ function commitRootImpl(root, renderPriorityLevel) {
     startCommitLifeCyclesTimer();
     // commit 第三个子阶段
     nextEffect = firstEffect;
+    debugger
     do {
       if (__DEV__) {
         invokeGuardedCallback(
@@ -2143,6 +2155,7 @@ function commitRootImpl(root, renderPriorityLevel) {
 // commit 阶段的第一个子阶段
 // 调用类组件的 getSnapshotBeforeUpdate 生命周期函数
 function commitBeforeMutationEffects() {
+  debugger
   // 循环 effect 链
   while (nextEffect !== null) {
     // nextEffect 是 effect 链上从 firstEffect 到 lastEffect
@@ -2192,6 +2205,7 @@ function commitBeforeMutationEffects() {
 // commit 阶段的第二个子阶段
 // 根据 effectTag 执行 DOM 操作
 function commitMutationEffects(root: FiberRoot, renderPriorityLevel) {
+  debugger
   // 循环 effect 链
   while (nextEffect !== null) {
     // 开发环境执行 忽略
@@ -2281,6 +2295,7 @@ function commitLayoutEffects(
   root: FiberRoot,
   committedExpirationTime: ExpirationTime,
 ) {
+  debugger
   while (nextEffect !== null) {
     setCurrentDebugFiberInDEV(nextEffect);
     // 此时 effectTag 已经被重置为 1, 表示 DOM 操作已经完成

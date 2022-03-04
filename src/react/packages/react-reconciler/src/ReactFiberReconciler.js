@@ -324,7 +324,9 @@ export function updateContainer(
   }
   // 将 update 对象加入到当前 Fiber 的更新队列当中 (updateQueue)
   // 待执行的任务都会被存储在 fiber.updateQueue.shared.pending 中
+  debugger
   enqueueUpdate(current, update);
+  debugger
   // 调度和更新 current 对象
   scheduleWork(current, expirationTime);
   // 返回过期时间
