@@ -815,6 +815,7 @@ function ChildReconciler(shouldTrackSideEffects) {
       } else {
         nextOldFiber = oldFiber.sibling;
       }
+      debugger
       const newFiber = updateSlot(
         returnFiber,
         oldFiber,
@@ -1324,7 +1325,7 @@ function ChildReconciler(shouldTrackSideEffects) {
     expirationTime: ExpirationTime,
   ): Fiber | null {
     // 这是入口方法, 根据 newChild 类型进行对应处理
-
+    debugger
     // 判断新的子 vdom 是否为占位组件 比如 <></>
     // false
     const isUnkeyedTopLevelFragment =

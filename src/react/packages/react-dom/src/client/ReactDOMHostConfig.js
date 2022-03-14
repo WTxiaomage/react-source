@@ -529,6 +529,7 @@ export function removeChild(
   parentInstance: Instance,
   child: Instance | TextInstance | SuspenseInstance,
 ): void {
+  debugger
   parentInstance.removeChild(child);
 }
 

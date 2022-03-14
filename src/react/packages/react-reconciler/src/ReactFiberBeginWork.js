@@ -240,6 +240,7 @@ export function reconcileChildren(
 
     // If we had any progressed work already, that is invalid at this point so
     // let's throw it out.
+    debugger
     workInProgress.child = reconcileChildFibers(
       workInProgress,
       current.child,
@@ -958,6 +959,8 @@ function finishClassComponent(
       renderExpirationTime,
     );
   } else {
+    // 初始化渲染时，在这里子节点的虚拟dom构建成对应的fiber
+    debugger
     reconcileChildren(
       current,
       workInProgress,
@@ -1125,7 +1128,8 @@ function updateHostComponent(current, workInProgress, renderExpirationTime) {
     workInProgress.expirationTime = workInProgress.childExpirationTime = Never;
     return null;
   }
-
+ // 初始化渲染时，在这里子节点的虚拟dom构建成对应的fiber
+  debugger
   reconcileChildren(
     current,
     workInProgress,

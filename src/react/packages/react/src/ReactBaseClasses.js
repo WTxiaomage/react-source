@@ -55,6 +55,7 @@ Component.prototype.isReactComponent = {};
  * @protected
  */
 Component.prototype.setState = function(partialState, callback) {
+  debugger
   invariant(
     typeof partialState === 'object' ||
       typeof partialState === 'function' ||
