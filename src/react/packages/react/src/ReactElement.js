@@ -398,6 +398,7 @@ export function jsxDEV(type, config, maybeKey, source, self) {
  * 4. 创建并返回 ReactElement
  */
 export function createElement(type, config, children) {
+  debugger
   /**
    * propName -> 属性名称
    * 用于后面的 for 循环

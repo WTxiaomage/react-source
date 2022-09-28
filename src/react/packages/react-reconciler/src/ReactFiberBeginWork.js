@@ -859,7 +859,7 @@ function updateClassComponent(
       renderExpirationTime,
     );
   }
-  // debugger
+  debugger
   const nextUnitOfWork = finishClassComponent(
     current,
     workInProgress,

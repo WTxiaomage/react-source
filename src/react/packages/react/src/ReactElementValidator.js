@@ -402,7 +402,7 @@ export function jsxWithValidationDynamic(type, props, key) {
 
 export function createElementWithValidation(type, props, children) {
   const validType = isValidElementType(type);
-
+  // debugger
   // We warn in this case but don't throw. We expect the element creation to
   // succeed and there will likely be errors in render.
   if (!validType) {

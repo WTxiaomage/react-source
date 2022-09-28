@@ -2,14 +2,14 @@
  * @Author: wangtao
  * @Date: 2022-02-28 22:55:31
  * @LastEditors: 汪滔
- * @LastEditTime: 2022-09-28 00:33:32
+ * @LastEditTime: 2022-09-28 23:16:02
  * @Description: file content
  */
 import * as React from "react";
 
 // function App() {
 //   const [isShow, setIsShow] = React.useState(true);
-
+//   debugger;
 //   return (
 //     <div>
 //       <p>111</p>
@@ -39,6 +39,8 @@ class App extends React.Component {
   }
   render() {
     const { isShow } = this.state;
+    console.log("🚀🚀🚀wimi======>>>111111");
+    debugger;
     return (
       <div>
         <p>111</p>
@@ -50,7 +52,7 @@ class App extends React.Component {
         >
           显示
         </button>
-        {/* <Test></Test> */}
+        <Test></Test>
       </div>
     );
   }
@@ -68,6 +70,7 @@ class Test extends React.Component {
     console.log("componentDidMount");
   }
   render() {
+    console.log("🚀🚀🚀wimi======>>>22222");
     const { isTestShow } = this.state;
     return (
       <div>
